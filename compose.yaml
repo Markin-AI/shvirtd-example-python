@@ -6,6 +6,7 @@ include:
 services:
   db:
     image: mysql:8
+    restart: on-failure
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -22,6 +23,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.python
+    restart: on-failure
     ports:
       - "5000:5000"
     depends_on:
